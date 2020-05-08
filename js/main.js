@@ -35,7 +35,9 @@ function inicializaCronometro() {
 
     let tempoRestante = $('#tempo-digitacao').text();
     campo.one('focus', function () {
-        $('#btn-reset').toggleClass('disabled');
+        $('#btn-reset').addClass('disabled');
+        $('#btn-reset').attr('disabled', true);
+
         let cronometro = setInterval(function () {
             tempoRestante--;
             $('#tempo-digitacao').text(tempoRestante);
@@ -52,6 +54,8 @@ function finish() {
     campo.attr('disabled', true);
     campo.addClass('text-area-desabilitado');
     $('#btn-reset').removeClass('disabled');
+    $('#btn-reset').attr('disabled', false)
+
     setScore();
 }
 
@@ -79,6 +83,9 @@ function reiniciaJogo() {
     campo.removeClass('text-area-correto');
     campo.removeClass('text-area-errado');
 
+    $('#btn-reset').addClass('disabled');
+    $('#btn-reset').attr('disabled', true);
+
     $('#contador-palavras').text('0');
     $('#contador-caracteres').text('0');
     $('#tempo-digitacao').text(tempoInicial);
@@ -98,4 +105,21 @@ function setScore() {
                 </tr>`;
 
     tbody.prepend(linha);
+
+    $('.score').slideDown(500);
+    scrollScore();
+}
+
+$('#btn-score').click(showScore);
+
+function showScore() {
+
+    $('.score').stop().slideToggle(500);
+}
+
+function scrollScore() {
+
+    var posicaoPlacar = $('.score').offset().top;
+
+    $('html, body').animate({ scrollTop: posicaoPlacar+"px"}, 1000);
 }
