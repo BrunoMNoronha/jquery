@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <div class="card-panel red lighten-2 center" hidden><span class="white-text text-darken-2">Erro de conexão, tente novamente.</span></div>
+    <div class="card-panel red lighten-2 center" hidden><span class="white-text text-darken-2">Erro de conexão, tente
+            novamente.</span></div>
     <div class="container">
         <h1 class="center">jQuery Typer</h1>
         <p class="frase z-depth-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum temporibus excepturi
@@ -25,9 +26,12 @@
         </ul>
 
         <textarea class="text-area" cols="70"></textarea>
-        <button class="waves-effect waves-light btn disabled" id="btn-reset" disabled>Reset</button>
-        <button class="waves-effect waves-light btn" id="btn-update">Update</button>
-        <button class="waves-effect waves-light btn" id="btn-score">Score</button>
+
+        <div class="buttons">
+            <button class="waves-effect waves-light btn disabled" id="btn-reset" disabled>Reset</button>
+            <button class="waves-effect waves-light btn" id="btn-update">Update</button>
+            <button class="waves-effect waves-light btn" id="btn-score">Score</button>
+        </div>
 
         <ul>
             <li><i class="material-icons icones">font_download</i><span id="contador-caracteres">
@@ -43,10 +47,6 @@
                     <th>Palavras</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Bruno</td>
-                        <td>10</td>
-                    </tr>
                 </tbody>
             </table>
         </section>

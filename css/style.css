@@ -5,10 +5,18 @@ body {
 .frase {
     height: 100px;
     padding: 15px;
-    /* background-image: url("../img/spinner.gif"); */
     background-repeat: no-repeat;
     background-position: center center;
-    /* background-image: none; */
+}
+
+ul li{
+    display: inline-block;
+    padding-right: 16px;
+    font-size: 20px;
+}
+
+.icones {
+    vertical-align: middle;
 }
 
 .text-area {
@@ -20,22 +28,18 @@ body {
     background-color: #F8F8F8;
 }
 
-.icones {
-    vertical-align: middle;
-}
-
-ul li{
-    display: inline-block;
-    padding-right: 16px;
-    font-size: 20px;
-}
-
 .text-area-correto {
     border: 2px solid #39ff14;
 }
 
 .text-area-errado {
     border: 2px solid #ff1439;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
 }
 
 .score {

@@ -44,11 +44,11 @@ function inicializaCronometro() {
             $('#btn-reset').addClass('disabled');
             $('#btn-reset').attr('disabled', true);
             $('#tempo-digitacao').text(tempoRestante);
-            tempoRestante--;
             if (tempoRestante < 1) {
                 finish();
                 clearInterval(cronometro);
             }
+            tempoRestante--;
         }, 1000);
     });
 }
