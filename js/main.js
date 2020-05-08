@@ -3,6 +3,7 @@ let tempoInicial = $('#tempo-digitacao').text();
 
 $(function () {
 
+    campo.val('');
     atualizaTamanhoFrase();
     inicializaContadores();
     inicializaCronometro();
@@ -13,34 +14,37 @@ $(function () {
 function atualizaTamanhoFrase() {
 
     let frase = $('.frase').text();
-    let numPalavras = frase.split(/\S+/).length;
+    let numPalavras = frase.split(/\S+/).length - 1;
     let tamanhoFrase = $('#tamanho-frase');
     tamanhoFrase.text(numPalavras);
+}
+
+function atualizaTempoInicial(tempo) {
+    tempoInicial = tempo;
+    $('#tempo-digitacao').text(tempo);
 }
 
 function inicializaContadores() {
 
     campo.on('input', function () {
         let conteudo = campo.val();
-
         let qtdPalavras = conteudo.split(/\S+/).length - 1;
-        $('#contador-palavras').text(qtdPalavras);
-
         let qtdCaracteres = conteudo.length;
+        $('#contador-palavras').text(qtdPalavras);
         $('#contador-caracteres').text(qtdCaracteres);
     });
 }
 
 function inicializaCronometro() {
 
-    let tempoRestante = $('#tempo-digitacao').text();
     campo.one('focus', function () {
-        $('#btn-reset').addClass('disabled');
-        $('#btn-reset').attr('disabled', true);
 
+        let tempoRestante = $('#tempo-digitacao').text();
         let cronometro = setInterval(function () {
-            tempoRestante--;
+            $('#btn-reset').addClass('disabled');
+            $('#btn-reset').attr('disabled', true);
             $('#tempo-digitacao').text(tempoRestante);
+            tempoRestante--;
             if (tempoRestante < 1) {
                 finish();
                 clearInterval(cronometro);
@@ -61,10 +65,11 @@ function finish() {
 
 function validaTextArea() {
 
-    let frase = $('.frase').text();
+
     campo.on('input', function () {
-        var digitado = campo.val();
-        var digitouCorreto = frase.startsWith(digitado);
+        let frase = $('.frase').text();
+        let digitado = campo.val();
+        let digitouCorreto = frase.startsWith(digitado);
         if (digitouCorreto) {
             campo.removeClass('text-area-errado');
             campo.addClass('text-area-correto');
@@ -120,6 +125,5 @@ function showScore() {
 function scrollScore() {
 
     var posicaoPlacar = $('.score').offset().top;
-
-    $('html, body').animate({ scrollTop: posicaoPlacar+"px"}, 1000);
+    $('html, body').animate({ scrollTop: posicaoPlacar + "px" }, 1000);
 }

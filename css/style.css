@@ -5,6 +5,10 @@ body {
 .frase {
     height: 100px;
     padding: 15px;
+    /* background-image: url("../img/spinner.gif"); */
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* background-image: none; */
 }
 
 .text-area {
